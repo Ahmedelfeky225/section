@@ -1,16 +1,17 @@
-import flask_restful
 import joblib as joblib
 from flask import Flask, request, jsonify
+import sys
+
+sys.modules['sklearn.externals.joblib'] = joblib
+import flask_restful
 from flask_restful import Resource, Api
+
 import joblib
 import pandas as pd
 from flask_cors import CORS
 
-import sys
-sys.modules['sklearn.externals.joblib'] = joblib
-
-
 app = Flask(__name__)
+
 CORS(app)
 
 api = Api(app)
